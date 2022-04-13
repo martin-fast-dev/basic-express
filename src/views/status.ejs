@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <heaad>
+    <link rel="stylesheet" href="css/status.css">
+  </heaad>
+  <body>
+    <div id="wrapper">
+      <section class="sec_include">
+        <div class="container">
+            <div class="col-xs-12 col-sm-4 col-md-4 adj_text">
+              <h3>Status</h3>
+              <% members.map((member) => { %>
+                <div>
+                  <p><%=member.username%></p>
+                  <% for(let i = 0; i < member.hearts; i++) { %>
+                    <span>*</span>
+                  <% } %>
+                </div>
+              <% }) %>
+            </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
