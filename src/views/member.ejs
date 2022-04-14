@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
   <heaad>
-    <link rel="stylesheet" href="css/user.css">
+    <link rel="stylesheet" href="css/member.css">
   </heaad>
   <body>
     <div id="wrapper">
       <section class="sec_include">
         <div class="container">
             <div class="col-xs-12 col-sm-4 col-md-4 adj_text">
-              <h3>User</h3>
+              <h3>Member</h3>
                 <form name="save-member" action="/members/save-member" method="post">
-                  Namn: <input name="username" id="username" value="<%=member ? member.username : ''%>" /><br/>
+                  Namn: <input type="text" name="username" id="username" value="<%=member ? member.username : ''%>" /><br/>
+                  <input type="hidden" name="id" id="id" value="<%=member ? member._id : ''%>" />
                   <input type="submit" value="Spara" class="" />
                 </form>
             </div>

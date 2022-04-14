@@ -11,10 +11,15 @@
               <h3>Status</h3>
               <% members.map((member) => { %>
                 <div>
-                  <p><%=member.username%></p>
-                  <% for(let i = 0; i < member.hearts; i++) { %>
-                    <span>*</span>
-                  <% } %>
+                  <form action="" method="post" id="myForm">
+                    <p><%=member.username%></p>
+                    <% for(let i = 0; i < member.hearts; i++) { %>
+                      <span>*</span>
+                    <% } %>
+                    <input type="hidden" name="id" value="<%= member._id %>" />
+                    <input type="hidden" name="hearts" value="<%= member.hearts %>" />
+                    <span><button type="submit">+</button></span>
+                  </form>
                 </div>
               <% }) %>
             </div>
