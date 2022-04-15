@@ -1,0 +1,32 @@
+body {
+  background-color: rgb(250, 215, 220);
+  font-family: 'Open Sans', sans-serif;
+}
+
+.memberWrapper {
+  margin: 10px 0;
+}
+
+.avatarImg {
+  max-width: 50px;
+}
+
+.username {
+  font-weight: bold;
+  color: rgb(18, 17, 17);
+}
+
+.heartImg {
+  max-width: 30px;
+}
+
+.heartButton {
+  border: none;
+  background-color: transparent;
+  padding: unset;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
