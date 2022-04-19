@@ -4,14 +4,6 @@ import Debug from "debug";
 const debug = Debug('app:membersService');
 const DBURL = process.env.DBURL;
 const DBNAME = process.env.DBNAME;
-const defaultMember = {
-  username: '',
-  avatar: '',
-  hearts: 0,
-  stars: 0,
-  wallet: 0,
-  skulls: 0
-};
 
 const fetchMembers = async (id) => {
   let client;
@@ -48,7 +40,7 @@ const saveMember = async (info) => {
     // this option instructs the method to create a document if no documents match the filter
     const options = { upsert: true };
     const updateDoc = {
-      $set: {...defaultMember, ...info},
+      $set: {...info},
     };
 
     const result = await db.collection('members').updateOne(filter, updateDoc, options);
@@ -68,11 +60,12 @@ const editMemberData = async (id, data) => {
     client = await MongoClient.connect(DBURL);
     const db = client.db(DBNAME);
     const filter = {_id: ObjectId(id)};
+    const options = { upsert: true };
     const updateDoc = {
       $set: {...data},
     };
 
-    const result = await db.collection('members').updateOne(filter, updateDoc);
+    const result = await db.collection('members').updateOne(filter, updateDoc, options);
 
     debug(result);
 

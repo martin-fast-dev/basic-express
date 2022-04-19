@@ -36,10 +36,12 @@
     >
       <img class="avatarImg" src="<%=member ? member.avatar : ''%>" />
       <div class="modalInput">
-        <input type="file" id="avatar" name="avatar">
-        <input type="text" name="username" id="username" value="<%=member ? member.username : ''%>" /><br/>
+        <input type="file" name="avatar" id="avatar" accept="image/png, image/jpeg" />
+        <input type="text" name="username" id="username" value="<%=member ? member.username : ''%>" />
         <input type="hidden" name="id" id="id" value="<%=member ? member._id : ''%>" />
-        <input type="submit" value="Spara" class="" />
+        <button class="saveButton" type="submit">
+          <img class="saveImage" src="/images/cloud.png" />
+        </button>
       </div>
       <div id="modalClose">
         <img class="closeButton" src="/images/close.png" />
