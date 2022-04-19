@@ -10,6 +10,8 @@
             <div class="">
               <h3>Member</h3>
                 <form name="save-member" action="/members/save-member" method="post">
+                  <img class="avatarImg" src="<%=member ? member.avatar : ''%>" />
+                  <input type="file" id="avatar" name="avatar">
                   Namn: <input type="text" name="username" id="username" value="<%=member ? member.username : ''%>" /><br/>
                   <input type="hidden" name="id" id="id" value="<%=member ? member._id : ''%>" />
                   <input type="submit" value="Spara" class="" />

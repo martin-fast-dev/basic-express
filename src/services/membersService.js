@@ -2,6 +2,8 @@ import { MongoClient, ObjectId } from 'mongodb';
 import Debug from "debug";
 
 const debug = Debug('app:membersService');
+const DBURL = process.env.DBURL;
+const DBNAME = process.env.DBNAME;
 const defaultMember = {
   username: '',
   avatar: '',
@@ -12,15 +14,12 @@ const defaultMember = {
 };
 
 const fetchMembers = async (id) => {
-  const url = 'mongodb+srv://dbUser:RGG9fQ26X2AZai7@hobbycluster.vqgyj.mongodb.net?retryWrites=true&w=majority';
-  const dbName = 'hobby';
   let client;
 
   try {
-    client = await MongoClient.connect(url);
+    client = await MongoClient.connect(DBURL);
     debug('Connected to MongoDB');
-
-    const db = client.db(dbName);
+    const db = client.db(DBNAME);
 
     if (id) {
       return await db.collection('members').findOne({_id: new ObjectId(id)});
@@ -34,13 +33,11 @@ const fetchMembers = async (id) => {
 }
 
 const saveMember = async (info) => {
-  const url = 'mongodb+srv://dbUser:RGG9fQ26X2AZai7@hobbycluster.vqgyj.mongodb.net?retryWrites=true&w=majority';
-  const dbName = 'hobby';
   let client;
 
   try {
-    client = await MongoClient.connect(url);
-    const db = client.db(dbName);
+    client = await MongoClient.connect(DBURL);
+    const db = client.db(DBNAME);
 
     console.log('info: ', {...info});
     const { id } = info;
@@ -65,13 +62,11 @@ const saveMember = async (info) => {
 }
 
 const editMemberData = async (id, data) => {
-  const url = 'mongodb+srv://dbUser:RGG9fQ26X2AZai7@hobbycluster.vqgyj.mongodb.net?retryWrites=true&w=majority';
-  const dbName = 'hobby';
   let client;
 
   try {
-    client = await MongoClient.connect(url);
-    const db = client.db(dbName);
+    client = await MongoClient.connect(DBURL);
+    const db = client.db(DBNAME);
     const filter = {_id: ObjectId(id)};
     const updateDoc = {
       $set: {...data},

@@ -4,7 +4,16 @@ body {
 }
 
 .memberWrapper {
-  margin: 10px 0;
+  margin: 10px 0 20px;
+  display: flex;
+  align-items: center;
+}
+
+.member {
+  margin-right: 10px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .avatarImg {
@@ -14,6 +23,7 @@ body {
 .username {
   font-weight: bold;
   color: rgb(18, 17, 17);
+  margin: 0;
 }
 
 .heartImg {

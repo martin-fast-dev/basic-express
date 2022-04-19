@@ -12,17 +12,17 @@
               <% members.map((member) => { %>
                 <div>
                   <form  class="memberWrapper" action="" method="post" id="myForm">
-                    <div class="member">
-                      <a href="<%=`/members/${member._id}`%>">
-                        <img class="avatarImg" src="images/girl.png" />
-                        <p class="username"><%=member.username%></p>
-                      </a>
-                    </div>
+                    <a class="member" href="<%=`/members/${member._id}`%>">
+                      <img class="avatarImg" src="<%= member.avatar %>" />
+                      <p class="username"><%=member.username%></p>
+                    </a>
                     <div class="hearts">
                     <% for(let i = 0; i < member.hearts; i++) { %>
+                      <button type="submit" class="heartButton" formaction="/status/remove">
                         <img class="heartImg" src="images/pink-heart.png" />
+                      </button>
                     <% } %>
-                    <button type="submit" class="heartButton">
+                    <button type="submit" class="heartButton" formaction="/status/add">
                       <img class="heartImg" src="images/pink-hearts.png" />
                     </button>
                     </div>

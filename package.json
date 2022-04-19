@@ -24,7 +24,9 @@
     "restartable": "rs",
     "delay": 2500,
     "env": {
-      "PORT": 3000
+      "PORT": 3000,
+      "DBURL": "mongodb+srv://dbUser:RGG9fQ26X2AZai7@hobbycluster.vqgyj.mongodb.net?retryWrites=true&w=majority",
+      "DBNAME": "hobby"
     }
   }
 }

@@ -1,6 +1,7 @@
 import express from 'express';
 import Debug from "debug";
 import { fetchMembers, saveMember } from '../services/membersService.js'
+import { MongoUnexpectedServerResponseError } from 'mongodb';
 
 const debug = Debug('app:membersRouter');
 const membersRouter = express.Router();
@@ -27,15 +28,23 @@ membersRouter.route('/add').get((req, res) => {
 });
 
 membersRouter.route('/save-member').post((req, res) => {
-  const { username } = req.body;
+  const { id, username, avatar } = req.body;
+
+  console.log(req.body);
 
   if (!username) {
     res.redirect('/members');
     return;
   }
 
+  const data = {
+    id,
+    username,
+    avatar: `/images/${avatar}`
+  };
+
   (async function editMember(){
-    await saveMember(req.body);
+    await saveMember(data);
     res.redirect('/members');
   }());
 });
