@@ -1,33 +1,19 @@
-body {
-  background-color: rgb(250, 215, 220);
-  font-family: 'Open Sans', sans-serif;
-}
-
 .memberWrapper {
-  margin: 10px 0 20px;
   display: flex;
   align-items: center;
 }
 
 .member {
-  margin-right: 10px;
+  margin-right: 2vw;
   align-items: center;
   display: flex;
   flex-direction: column;
 }
 
-.avatarImg {
-  max-width: 50px;
-}
 
-.username {
-  font-weight: bold;
-  color: rgb(18, 17, 17);
-  margin: 0;
-}
 
 .heartImg {
-  max-width: 30px;
+  max-width: 10vw;
 }
 
 .heartButton {
@@ -35,8 +21,4 @@ body {
   background-color: transparent;
   padding: unset;
   cursor: pointer;
-}
-
-a {
-  text-decoration: none;
 }

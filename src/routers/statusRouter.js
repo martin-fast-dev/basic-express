@@ -11,26 +11,26 @@ statusRouter.route('/').get((req, res) => {
 });
 
 statusRouter.route('/add').post((req, res) => {
-  const { id, hearts } = req.body;
+  const { id, hearts, route } = req.body;
   const data = {
     hearts: Number(hearts) + 1,
   };
 
   (async function editMember(){
     await editMemberData(id, data);
-    res.redirect('/status');
+    res.redirect(route);
   }());
 });
 
 statusRouter.route('/remove').post((req, res) => {
-  const { id, hearts } = req.body;
+  const { id, hearts, route } = req.body;
   const data = {
     hearts: Number(hearts) - 1,
   };
 
   (async function editMember(){
     await editMemberData(id, data);
-    res.redirect('/status');
+    res.redirect(route);
   }());
 });
 

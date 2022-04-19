@@ -2,6 +2,7 @@
 <html>
   <head>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/status.css">
   </head>
   <body>
@@ -28,6 +29,7 @@
                     </div>
                     <input type="hidden" name="id" value="<%= member._id %>" />
                     <input type="hidden" name="hearts" value="<%= member.hearts %>" />
+                    <input type="hidden" name="route" value="/status" />
                   </form>
                 </div>
               <% }) %>

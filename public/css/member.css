@@ -1,0 +1,69 @@
+@import url("status.css");
+
+.avatarImg {
+  max-width: 25vmax;
+  padding: 3vmax;
+}
+
+.username {
+  font-weight: bold;
+  font-size: 3vmax;
+  color: rgb(18, 17, 17);
+  margin: 0;
+}
+
+#infoWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#editModal {
+  position: absolute;
+  height: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 3vmax;
+  background-color: aqua;
+  border-radius: 2vw;
+  border: 3px solid black;
+}
+
+.modalInput {
+  display: flex;
+  flex-direction: column;
+}
+
+#modalClose {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 2vmax;
+  transform: rotate(15deg);
+}
+
+.closeButton {
+  width: 8vmax;
+}
+
+@media (orientation: landscape) {
+  .memberWrapper {
+    flex-direction: row;
+    height: 100%;
+    padding: 0 5vw;
+  }
+}
+
+@media (orientation: portrait) {
+  .memberWrapper {
+    flex-direction: column;
+    padding: 10vw;
+  }
+
+  #modalClose {
+    top: unset;
+    bottom: 0;
+  }
+}

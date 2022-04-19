@@ -1,24 +1,64 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="css/member.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/member.css">
   </head>
   <body>
-    <div id="wrapper">
-      <section class="sec_include">
-        <div class="container">
-            <div class="">
-              <h3>Member</h3>
-                <form name="save-member" action="/members/save-member" method="post">
-                  <img class="avatarImg" src="<%=member ? member.avatar : ''%>" />
-                  <input type="file" id="avatar" name="avatar">
-                  Namn: <input type="text" name="username" id="username" value="<%=member ? member.username : ''%>" /><br/>
-                  <input type="hidden" name="id" id="id" value="<%=member ? member._id : ''%>" />
-                  <input type="submit" value="Spara" class="" />
-                </form>
-            </div>
-        </div>
-      </section>
-    </div>
+    <form  class="memberWrapper" action="" method="post" id="myForm">
+      <div id="infoWrapper" class="infoWrapper">
+        <img class="avatarImg" src="<%= member.avatar %>" />
+        <p class="username"><%=member.username%></p>
+      </div>
+      <div class="hearts">
+      <% for(let i = 0; i < member.hearts; i++) { %>
+        <button type="submit" class="heartButton" formaction="/status/remove">
+          <img class="heartImg" src="/images/pink-heart.png" />
+        </button>
+      <% } %>
+      <button type="submit" class="heartButton" formaction="/status/add">
+        <img class="heartImg" src="/images/pink-hearts.png" />
+      </button>
+      </div>
+      <input type="hidden" name="id" value="<%= member._id %>" />
+      <input type="hidden" name="hearts" value="<%= member.hearts %>" />
+      <input type="hidden" name="route" value="<%=`/members/${member._id}`%>" />
+    </form>
+
+    <form
+      class="memberWrapper"
+      name="save-member"
+      action="/members/save-member"
+      id="editModal"
+      method="post"
+      style="display:none;"
+    >
+      <img class="avatarImg" src="<%=member ? member.avatar : ''%>" />
+      <div class="modalInput">
+        <input type="file" id="avatar" name="avatar">
+        <input type="text" name="username" id="username" value="<%=member ? member.username : ''%>" /><br/>
+        <input type="hidden" name="id" id="id" value="<%=member ? member._id : ''%>" />
+        <input type="submit" value="Spara" class="" />
+      </div>
+      <div id="modalClose">
+        <img class="closeButton" src="/images/close.png" />
+      </div>
+    </form>
+
+    <script>
+      function toggleModal() {
+        const x = document.getElementById("editModal");
+        if (x.style.display === "none") {
+          x.style.display = "flex";
+        } else {
+          x.style.display = "none";
+        }
+       };
+      const infoWrapper = document.getElementById("infoWrapper");
+      const modalClose = document.getElementById("modalClose");
+      infoWrapper.onclick = () => toggleModal();
+      modalClose.onclick = () => toggleModal();
+      </script>
   </body>
 </html>

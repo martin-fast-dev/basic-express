@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/members.css">
   </head>
   <body>
@@ -14,6 +16,7 @@
                   <a href="<%=`/members/${member._id}`%>"><%=member.username%></a>
                 </div>
               <% }) %>
+              <br/>
               <a href="<%=`/members/add`%>">Lägg till</a>
             </div>
         </div>
