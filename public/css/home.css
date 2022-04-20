@@ -1,0 +1,14 @@
+body {
+  background-color: rgb(177, 220, 255);
+  font-family: 'Open Sans', sans-serif;
+  padding: 3vmax;
+}
+
+h1 {
+  font-size: 5vmax;
+}
+
+a {
+  font-size: 3vmax;
+  text-decoration: none;
+}

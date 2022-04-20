@@ -7,6 +7,9 @@
   </head>
   <body>
     <% if(member) { %>
+      <a class="backButton" href="/members">
+        <img class="backButtonImg" src="/images/arrow-back.png" />
+      </a>
       <form  class="memberWrapper" action="" method="post" id="myForm">
         <div id="infoWrapper" class="infoWrapper">
           <img class="avatarImg" src="<%= member.avatar %>" />

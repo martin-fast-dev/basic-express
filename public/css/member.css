@@ -110,9 +110,22 @@ input[type="file"] {
   transform: rotate(15deg);
 }
 
+.backButtonImg,
 .closeButtonImg,
 .deleteButtonImg {
   width: 8vmax;
+}
+
+.backButtonImg {
+  width: 5vmax;
+  visibility: hidden;
+}
+
+.backButton {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 2vmax;
 }
 
 .deleteButtonImg {
@@ -153,5 +166,9 @@ input[type="file"] {
   .deleteButtonImg {
     right: unset;
     left: 0;
+  }
+
+  .username {
+    display: none;
   }
 }

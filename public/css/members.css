@@ -1,3 +1,7 @@
+body {
+  background-color: rgb(73, 250, 212);
+}
+
 .membersWrapper {
   margin: 0 4vmax;
 }
