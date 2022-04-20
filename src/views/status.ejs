@@ -3,7 +3,7 @@
   <head>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href="css/status.css">
+    <link rel="stylesheet" href="css/member.css">
   </head>
   <body>
     <div>
@@ -13,23 +13,23 @@
               <% members.map((member) => { %>
                 <div>
                   <form  class="memberWrapper" action="" method="post" id="myForm">
-                    <a class="member" href="<%=`/members/${member._id}`%>">
+                    <div id="infoWrapper" class="infoWrapper">
                       <img class="avatarImg" src="<%= member.avatar %>" />
                       <p class="username"><%=member.username%></p>
-                    </a>
-                    <div class="hearts">
+                    </div>
+                    <div class="heartsArray">
                     <% for(let i = 0; i < member.hearts; i++) { %>
                       <button type="submit" class="heartButton" formaction="/status/remove">
-                        <img class="heartImg" src="images/pink-heart.png" />
+                        <img class="heartImg" src="/images/pink-heart.png" />
                       </button>
                     <% } %>
                     <button type="submit" class="heartButton" formaction="/status/add">
-                      <img class="heartImg" src="images/pink-hearts.png" />
+                      <img class="heartImg" src="/images/pink-hearts.png" />
                     </button>
                     </div>
                     <input type="hidden" name="id" value="<%= member._id %>" />
                     <input type="hidden" name="hearts" value="<%= member.hearts %>" />
-                    <input type="hidden" name="route" value="/status" />
+                    <input type="hidden" name="route" value="<%=`/members/${member._id}`%>" />
                   </form>
                 </div>
               <% }) %>
