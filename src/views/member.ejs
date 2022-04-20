@@ -34,9 +34,9 @@
       method="post"
       style="display:none;"
     >
-      <img class="avatarImg" src="<%=member ? member.avatar : ''%>" />
+      <img id="avatarImg" class="avatarImg" src="<%=member ? member.avatar : ''%>" />
       <div class="modalInput">
-        <input type="file" name="avatar" id="avatar" accept="image/png, image/jpeg" />
+        <input type="file" name="avatar" id="avatarInput" accept="image/png, image/jpeg" onchange="setImage(this)" />
         <input type="text" name="username" id="username" value="<%=member ? member.username : ''%>" />
         <input type="hidden" name="id" id="id" value="<%=member ? member._id : ''%>" />
         <button class="saveButton" type="submit">
@@ -49,6 +49,12 @@
     </form>
 
     <script>
+      function setImage(input) {
+        if (input.files && input.files[0]) {
+          const img = document.getElementById("avatarImg");
+          img.src = `/images/${input.files[0].name}`;
+        }
+      }
       function toggleModal() {
         const x = document.getElementById("editModal");
         if (x.style.display === "none") {
@@ -57,8 +63,10 @@
           x.style.display = "none";
         }
        };
+       const avatarInput = document.getElementById("avatarImg");
       const infoWrapper = document.getElementById("infoWrapper");
       const modalClose = document.getElementById("modalClose");
+      avatarInput.onchange = () => setImage();
       infoWrapper.onclick = () => toggleModal();
       modalClose.onclick = () => toggleModal();
       </script>

@@ -48,8 +48,11 @@ membersRouter.route('/save-member').post((req, res) => {
   const data = {
     id,
     username,
-    avatar: `/images/${avatar}`
   };
+
+  if (avatar) {
+    data.avatar = `/images/${avatar}`;
+  }
 
   (async function editMember(){
     await saveMember(data);

@@ -60,12 +60,11 @@ const editMemberData = async (id, data) => {
     client = await MongoClient.connect(DBURL);
     const db = client.db(DBNAME);
     const filter = {_id: ObjectId(id)};
-    const options = { upsert: true };
     const updateDoc = {
       $set: {...data},
     };
 
-    const result = await db.collection('members').updateOne(filter, updateDoc, options);
+    const result = await db.collection('members').updateOne(filter, updateDoc);
 
     debug(result);
 
