@@ -31,9 +31,9 @@ const saveMember = async (info) => {
     client = await MongoClient.connect(DBURL);
     const db = client.db(DBNAME);
 
-    console.log('info: ', {...info});
-    const { id } = info;
+    debug('Save member info: ', {...info});
 
+    const { id } = info;
     const objId = id ? ObjectId(id) : new ObjectId();
 
     const filter = {_id: objId};
@@ -74,4 +74,25 @@ const editMemberData = async (id, data) => {
   client.close();
 }
 
-export { fetchMembers, saveMember, editMemberData };
+const deleteMember = async (id) => {
+  let client;
+
+  try {
+    client = await MongoClient.connect(DBURL);
+    const db = client.db(DBNAME);
+
+    debug('Delete member: ', id);
+
+    const filter = {_id: ObjectId(id)};
+
+    const result = await db.collection('members').deleteOne(filter);
+
+    debug(result);
+
+  } catch(error) {
+    debug(error);
+  }
+  client.close();
+}
+
+export { fetchMembers, saveMember, editMemberData, deleteMember };

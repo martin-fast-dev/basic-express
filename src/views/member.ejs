@@ -6,25 +6,27 @@
     <link rel="stylesheet" href="/css/member.css">
   </head>
   <body>
-    <form  class="memberWrapper" action="" method="post" id="myForm">
-      <div id="infoWrapper" class="infoWrapper">
-        <img class="avatarImg" src="<%= member.avatar %>" />
-        <p class="username"><%=member.username%></p>
-      </div>
-      <div class="hearts">
-      <% for(let i = 0; i < member.hearts; i++) { %>
-        <button type="submit" class="heartButton" formaction="/status/remove">
-          <img class="heartImg" src="/images/pink-heart.png" />
+    <% if(member) { %>
+      <form  class="memberWrapper" action="" method="post" id="myForm">
+        <div id="infoWrapper" class="infoWrapper">
+          <img class="avatarImg" src="<%= member.avatar %>" />
+          <p class="username"><%=member.username%></p>
+        </div>
+        <div class="heartsArray">
+        <% for(let i = 0; i < member.hearts; i++) { %>
+          <button type="submit" class="heartButton" formaction="/status/remove">
+            <img class="heartImg" src="/images/pink-heart.png" />
+          </button>
+        <% } %>
+        <button type="submit" class="heartButton" formaction="/status/add">
+          <img class="heartImg" src="/images/pink-hearts.png" />
         </button>
-      <% } %>
-      <button type="submit" class="heartButton" formaction="/status/add">
-        <img class="heartImg" src="/images/pink-hearts.png" />
-      </button>
-      </div>
-      <input type="hidden" name="id" value="<%= member._id %>" />
-      <input type="hidden" name="hearts" value="<%= member.hearts %>" />
-      <input type="hidden" name="route" value="<%=`/members/${member._id}`%>" />
-    </form>
+        </div>
+        <input type="hidden" name="id" value="<%= member._id %>" />
+        <input type="hidden" name="hearts" value="<%= member.hearts %>" />
+        <input type="hidden" name="route" value="<%=`/members/${member._id}`%>" />
+      </form>
+    <% } %>
 
     <form
       class="memberWrapper"
@@ -32,20 +34,26 @@
       action="/members/save-member"
       id="editModal"
       method="post"
-      style="display:none;"
+      style="<%=member ? 'display:none;' : ''%>"
     >
       <img id="avatarImg" class="avatarImg" src="<%=member ? member.avatar : ''%>" />
-      <div class="modalInput">
-        <input type="file" name="avatar" id="avatarInput" accept="image/png, image/jpeg" onchange="setImage(this)" />
-        <input type="text" name="username" id="username" value="<%=member ? member.username : ''%>" />
+      <div class="modalInputStack">
+        <label class="customFileUpload">
+          <input type="file" name="avatar" id="avatarInput" accept="image/png, image/jpeg" onchange="setImage(this)" />
+          Välj bild
+        </label>
+        <input class="usernameInput" type="text" name="username" id="username" value="<%=member ? member.username : 'Namn'%>" />
         <input type="hidden" name="id" id="id" value="<%=member ? member._id : ''%>" />
-        <button class="saveButton" type="submit">
+        <button class="imageButton" type="submit">
           <img class="saveImage" src="/images/cloud.png" />
         </button>
       </div>
-      <div id="modalClose">
-        <img class="closeButton" src="/images/close.png" />
-      </div>
+      <button id="modalClose" class="imageButton">
+        <img class="closeButtonImg" src="/images/close.png" />
+      </button>
+      <button type="submit" class="imageButton" formaction="/members/delete-member">
+        <img class="deleteButtonImg" src="/images/delete.png" />
+      </button>
     </form>
 
     <script>
@@ -56,11 +64,11 @@
         }
       }
       function toggleModal() {
-        const x = document.getElementById("editModal");
-        if (x.style.display === "none") {
-          x.style.display = "flex";
+        const modal = document.getElementById("editModal");
+        if (modal.style.display === "none") {
+          modal.style.display = "flex";
         } else {
-          x.style.display = "none";
+          modal.style.display = "none";
         }
        };
        const avatarInput = document.getElementById("avatarImg");

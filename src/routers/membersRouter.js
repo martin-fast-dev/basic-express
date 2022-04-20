@@ -1,6 +1,6 @@
 import express from 'express';
 import Debug from "debug";
-import { fetchMembers, saveMember } from '../services/membersService.js'
+import { fetchMembers, saveMember, deleteMember } from '../services/membersService.js'
 
 const debug = Debug('app:membersRouter');
 const membersRouter = express.Router();
@@ -56,6 +56,20 @@ membersRouter.route('/save-member').post((req, res) => {
 
   (async function editMember(){
     await saveMember(data);
+    res.redirect(`/members/${id}`);
+  }());
+});
+
+membersRouter.route('/delete-member').post((req, res) => {
+  const { id } = req.body;
+
+  if (!id) {
+    res.redirect('/members');
+    return;
+  }
+
+  (async function run(){
+    await deleteMember(id);
     res.redirect('/members');
   }());
 });

@@ -30,7 +30,7 @@
   align-items: center;
 }
 
-.hearts {
+.heartsArray {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -62,21 +62,40 @@
   border: 3px solid black;
 }
 
-.modalInput {
+.modalInputStack {
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
 }
 
-.modalInput input {
-  margin: 1vmax 0;
+.customFileUpload {
+  border: 0.3vmax solid rgb(0, 195, 255);
+  background-color: rgb(0, 217, 255);
+  border-radius: 1vmax;
+  display: inline-block;
+  padding: 1vmax 3vmax;
+  cursor: pointer;
+  font-size: 3vmax;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.usernameInput {
+  border: none;
+  background: none;
+  font-size: 3vmax;
+  border-bottom: 0.1vmax solid lightcoral;
 }
 
 .saveImage {
   width: 12vmax;
 }
 
-.saveButton {
+.imageButton {
   border: none;
   background-color: transparent;
   padding: unset;
@@ -91,8 +110,17 @@
   transform: rotate(15deg);
 }
 
-.closeButton {
+.closeButtonImg,
+.deleteButtonImg {
   width: 8vmax;
+}
+
+.deleteButtonImg {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 2vmax;
+  transform: rotate(-15deg);
 }
 
 @media (orientation: landscape) {
@@ -109,12 +137,21 @@
     padding: 10vw;
   }
 
-  .hearts {
+  .hearts-array {
     margin-top: 2vmax;
+  }
+
+  .modalInputStack {
+    padding-bottom: 10vh;
   }
 
   #modalClose {
     top: unset;
     bottom: 0;
+  }
+
+  .deleteButtonImg {
+    right: unset;
+    left: 0;
   }
 }
