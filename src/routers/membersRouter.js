@@ -56,7 +56,7 @@ membersRouter.route('/save-member').post((req, res) => {
 
   (async function editMember(){
     await saveMember(data);
-    res.redirect(`/members/${id}`);
+    res.redirect(id ? `/members/${id}` : '/members');
   }());
 });
 

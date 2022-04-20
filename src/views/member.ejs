@@ -42,7 +42,17 @@
           <input type="file" name="avatar" id="avatarInput" accept="image/png, image/jpeg" onchange="setImage(this)" />
           Välj bild
         </label>
-        <input class="usernameInput" type="text" name="username" id="username" value="<%=member ? member.username : 'Namn'%>" />
+        <input
+          class="usernameInput"
+          type="text"
+          name="username"
+          id="username"
+          <% if(member) { %>
+            value="<%=member.username %>"
+          <% } else { %>
+            placeholder="Namn" %>
+          <% } %>
+        />
         <input type="hidden" name="id" id="id" value="<%=member ? member._id : ''%>" />
         <button class="imageButton" type="submit">
           <img class="saveImage" src="/images/cloud.png" />

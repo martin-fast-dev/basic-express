@@ -6,21 +6,17 @@
     <link rel="stylesheet" href="css/members.css">
   </head>
   <body>
-    <div id="wrapper">
-      <section class="sec_include">
-        <div class="container">
-            <div class="col-xs-12 col-sm-4 col-md-4 adj_text">
-              <h3>Members list</h3>
-              <% members.map(member => { %>
-                <div>
-                  <a href="<%=`/members/${member._id}`%>"><%=member.username%></a>
-                </div>
-              <% }) %>
-              <br/>
-              <a href="<%=`/members/add`%>">Lägg till</a>
-            </div>
-        </div>
-      </section>
+    <div class="membersWrapper">
+      <% members.map(member => { %>
+        <a class="member" href="<%=`/members/${member._id}`%>">
+            <img class="avatarImg" src="<%= member.avatar %>" />
+            <p class="username"><%=member.username%></p>
+        </a>
+      <% }) %>
     </div>
+    <a class="addWrapper" href="/members/add">
+      <img class="addIcon" src="/images/add-user.png" />
+    </a>
+  </div>
   </body>
 </html>

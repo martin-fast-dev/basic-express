@@ -1,0 +1,32 @@
+.membersWrapper {
+  margin: 0 4vmax;
+}
+
+.member {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.avatarImg {
+  max-width: 5vmax;
+  padding: 3vmax;
+}
+
+.username {
+  font-weight: bold;
+  font-size: 3vmax;
+  color: rgb(18, 17, 17);
+  margin: 0;
+}
+
+.addWrapper {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+.addIcon {
+  max-width: 10vmax;
+  padding: 3vmax;
+}
