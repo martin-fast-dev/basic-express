@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(73, 250, 212);
+  background-color: #4afad4;
 }
 
 .membersWrapper {
@@ -24,13 +24,25 @@ body {
   margin: 0;
 }
 
-.addWrapper {
+.addButton {
   position: fixed;
   bottom: 0;
   right: 0;
 }
 
-.addIcon {
+.addButtonIcon {
   max-width: 10vmax;
   padding: 3vmax;
+}
+
+.backButton {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 2vmax;
+}
+
+.backButtonIcon {
+  width: 5vmax;
+  visibility: hidden;
 }

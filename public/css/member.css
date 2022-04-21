@@ -110,13 +110,12 @@ input[type="file"] {
   transform: rotate(15deg);
 }
 
-.backButtonImg,
 .closeButtonImg,
 .deleteButtonImg {
   width: 8vmax;
 }
 
-.backButtonImg {
+.backButtonIcon {
   width: 5vmax;
   visibility: hidden;
 }

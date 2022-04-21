@@ -5,9 +5,13 @@
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/member.css">
     <link rel="stylesheet" href="css/status.css">
+    <meta name="theme-color" content="#fad7dc" />
   </head>
   <body>
     <div class="membersWrapper">
+      <a class="backButton" href="/">
+        <img class="backButtonIcon" src="/images/arrow-back.png" />
+      </a>
       <% members.map(member => { %>
           <form  class="memberWrapper" action="" method="post" id="myForm">
             <div id="infoWrapper" class="infoWrapper">

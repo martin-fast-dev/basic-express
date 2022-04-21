@@ -4,8 +4,12 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/members.css">
+    <meta name="theme-color" content="#4afad4" />
   </head>
   <body>
+    <a class="backButton" href="/">
+      <img class="backButtonIcon" src="/images/arrow-back.png" />
+    </a>
     <div class="membersWrapper">
       <% members.map(member => { %>
         <a class="member" href="<%=`/members/${member._id}`%>">
@@ -14,8 +18,8 @@
         </a>
       <% }) %>
     </div>
-    <a class="addWrapper" href="/members/add">
-      <img class="addIcon" src="/images/add-user.png" />
+    <a class="addButton" href="/members/add">
+      <img class="addButtonIcon" src="/images/add-user.png" />
     </a>
   </div>
   </body>
