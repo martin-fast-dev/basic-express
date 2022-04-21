@@ -88,7 +88,8 @@ input[type="file"] {
   border: none;
   background: none;
   font-size: 3vmax;
-  border-bottom: 0.1vmax solid lightcoral;
+  border-bottom: 0.3vmax solid rgb(0, 195, 255);
+  max-width: 30vmax;
 }
 
 .saveImage {
