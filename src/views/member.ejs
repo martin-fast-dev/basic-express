@@ -18,11 +18,11 @@
         </div>
         <div class="heartsArray">
         <% for(let i = 0; i < member.hearts; i++) { %>
-          <button type="submit" class="heartButton" formaction="/status/remove">
+          <button type="submit" class="heartButton iconButton" formaction="/status/remove">
             <img class="heartImg" src="/images/pink-heart.png" />
           </button>
         <% } %>
-        <button type="submit" class="heartButton" formaction="/status/add">
+        <button type="submit" class="heartButton iconButton" formaction="/status/add">
           <img class="heartImg" src="/images/pink-hearts.png" />
         </button>
         </div>
@@ -58,14 +58,14 @@
           <% } %>
         />
         <input type="hidden" name="id" id="id" value="<%=member ? member._id : ''%>" />
-        <button class="imageButton" type="submit">
+        <button class="iconButton buttonImage" type="submit">
           <img class="saveImage" src="/images/cloud.png" />
         </button>
       </div>
-      <button id="modalClose" class="imageButton">
+      <button id="modalClose" class="iconButton buttonImage">
         <img class="closeButtonImg" src="/images/close.png" />
       </button>
-      <button type="submit" class="imageButton" formaction="/members/delete-member">
+      <button type="submit" class="iconButton buttonImage" formaction="/members/delete-member">
         <img class="deleteButtonImg" src="/images/delete.png" />
       </button>
     </form>

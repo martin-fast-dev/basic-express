@@ -37,16 +37,22 @@
   justify-content: center;
 }
 
-.heartImg {
-  max-width: 8vmax;
-}
-
 .heartButton {
   margin: 0 0.3vmax;
   border: none;
   background-color: transparent;
   padding: unset;
   cursor: pointer;
+}
+
+.iconButton:active,
+.iconButton:focus {
+  transform: rotate(20deg);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.heartImg {
+  max-width: 8vmax;
 }
 
 #editModal {
@@ -96,7 +102,7 @@ input[type="file"] {
   width: 12vmax;
 }
 
-.imageButton {
+.buttonImage {
   border: none;
   background-color: transparent;
   padding: unset;

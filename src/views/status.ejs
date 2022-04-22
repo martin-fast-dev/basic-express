@@ -21,11 +21,11 @@
             </div>
             <div class="heartsArray">
             <% for(let i = 0; i < member.hearts; i++) { %>
-              <button type="submit" class="heartButton" formaction="/status/remove">
-                <img class="heartImg" src="/images/pink-heart.png" />
+              <button type="submit" class="iconButton heartButton" formaction="/status/remove">
+                <img draggable="false" class="heartImg" src="/images/pink-heart.png" />
               </button>
             <% } %>
-            <button type="submit" class="heartButton" formaction="/status/add">
+            <button type="submit" class="iconButton heartButton" formaction="/status/add">
               <img class="heartImg" src="/images/pink-hearts.png" />
             </button>
             </div>
