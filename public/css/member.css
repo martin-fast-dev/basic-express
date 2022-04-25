@@ -39,16 +39,11 @@
 
 .heartButton {
   margin: 0 0.3vmax;
-  border: none;
-  background-color: transparent;
-  padding: unset;
-  cursor: pointer;
 }
 
-.iconButton:active,
-.iconButton:focus {
+.tiltButton:active,
+.tiltButton:focus {
   transform: rotate(20deg);
-  -webkit-tap-highlight-color: transparent;
 }
 
 .heartImg {
@@ -102,7 +97,7 @@ input[type="file"] {
   width: 12vmax;
 }
 
-.buttonImage {
+.imageButton {
   border: none;
   background-color: transparent;
   padding: unset;
@@ -140,6 +135,13 @@ input[type="file"] {
   right: 0;
   margin: 2vmax;
   transform: rotate(-15deg);
+}
+
+.deleteAllHeartsButton {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 2vmax;
 }
 
 @media (orientation: landscape) {

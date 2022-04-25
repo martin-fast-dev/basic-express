@@ -13,8 +13,8 @@
     <div class="membersWrapper">
       <% members.map(member => { %>
         <a class="member" href="<%=`/members/${member._id}`%>">
-            <img class="avatarImg" src="<%= member.avatar %>" />
-            <p class="username"><%=member.username%></p>
+          <img class="avatarImg" src="<%= member.avatar %>" />
+          <p class="username"><%=member.username%></p>
         </a>
       <% }) %>
     </div>

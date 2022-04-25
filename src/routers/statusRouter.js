@@ -34,4 +34,17 @@ statusRouter.route('/remove').post((req, res) => {
   }());
 });
 
+statusRouter.route('/delete-all').post((req, res) => {
+  const { id, route } = req.body;
+  const data = {
+    hearts: 0,
+  };
+
+  (async function editMember(){
+    await editMemberData(id, data);
+    res.redirect(route);
+  }());
+});
+
+
 export default statusRouter;
