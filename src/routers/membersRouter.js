@@ -36,7 +36,7 @@ membersRouter.route('/add').get((req, res) => {
 });
 
 membersRouter.route('/save-member').post((req, res) => {
-  const { id, username, avatar } = req.body;
+  const { id, username, avatar, icon } = req.body;
 
   console.log(req.body);
 
@@ -48,6 +48,7 @@ membersRouter.route('/save-member').post((req, res) => {
   const data = {
     id,
     username,
+    icon,
   };
 
   if (avatar) {

@@ -19,11 +19,11 @@
         <div class="heartsArray">
         <% for(let i = 0; i < member.hearts; i++) { %>
           <button type="submit" class="imageButton heartButton tiltButton" formaction="/status/remove">
-            <img class="heartImg" src="/images/pink-heart.png" />
+            <img class="heartImg" src=<%=`/images/${member.icon}.png` %> />
           </button>
         <% } %>
         <button type="submit" class="imageButton heartButton tiltButton" formaction="/status/add">
-          <img class="heartImg" src="/images/pink-hearts.png" />
+          <img class="heartImg addButton" src=<%=`/images/add-${member.icon}.png` %> />
         </button>
         </div>
         <button type="submit" class="imageButton deleteAllHeartsButton" formaction="/status/delete-all">
@@ -38,17 +38,16 @@
     <form
       class="memberWrapper"
       name="save-member"
-      action="/members/save-member"
+      action="javascript:void(0);"
       id="editModal"
       method="post"
       style="<%=member ? 'display:none;' : ''%>"
     >
-      <img id="avatarImg" class="avatarImg" src="<%=member ? member.avatar : ''%>" />
+      <label class="customFileUpload imageButton tiltButton">
+        <img id="avatarImg" class="avatarImg" src="<%=member ? member.avatar : '/images/add-avatar.png'%>" />
+        <input type="file" name="avatar" id="avatarInput" accept="image/png, image/jpeg" onchange="setImage(this)" />
+      </label>
       <div class="modalInputStack">
-        <label class="customFileUpload">
-          <input type="file" name="avatar" id="avatarInput" accept="image/png, image/jpeg" onchange="setImage(this)" />
-          Välj bild
-        </label>
         <input
           class="usernameInput"
           type="text"
@@ -60,15 +59,33 @@
             placeholder="Namn" %>
           <% } %>
         />
+        <div class="iconPickerArray">
+          <label class="customIconPicker imageButton tiltButton>">
+            <input type="radio" name="icon" value="heart" <%=!member || member.icon === 'heart' ? 'checked' : '' %>  />
+            <img class="iconPickerImage" src="/images/heart.png" />
+          </label>
+          <label class="customIconPicker imageButton tiltButton">
+            <input type="radio" name="icon" value="star" <%=member && member.icon === 'star' ? 'checked' : '' %>  />
+            <img class="iconPickerImage" src="/images/star.png" />
+          </label>
+          <label class="customIconPicker imageButton tiltButton">
+            <input type="radio" name="icon" value="beer" <%=member && member.icon === 'beer' ? 'checked' : '' %>  />
+            <img class="iconPickerImage" src="/images/beer.png" />
+          </label>
+          <label class="customIconPicker imageButton tiltButton">
+            <input type="radio" name="icon" value="skull" <%=member && member.icon === 'skull' ? 'checked' : '' %> />
+            <img class="iconPickerImage" src="/images/skull.png" />
+          </label>
+        </div>
         <input type="hidden" name="id" id="id" value="<%=member ? member._id : ''%>" />
-        <button class="tiltButton imageButton" type="submit">
+        <button class="tiltButton imageButton" type="submit" formaction="/members/save-member">
           <img class="saveImage" src="/images/cloud.png" />
         </button>
       </div>
-      <button id="modalClose" class="tiltButton imageButton">
+      <button id="modalClose" class="imageButton">
         <img class="closeButtonImg" src="/images/close.png" />
       </button>
-      <button type="submit" class="tiltButton imageButton" formaction="/members/delete-member">
+      <button type="submit" class="imageButton" formaction="/members/delete-member">
         <img class="deleteButtonImg" src="/images/delete.png" />
       </button>
     </form>

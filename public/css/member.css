@@ -37,17 +37,31 @@
   justify-content: center;
 }
 
+.imageButton {
+  border: none;
+  background-color: transparent;
+  padding: unset;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
 .heartButton {
   margin: 0 0.3vmax;
+}
+
+.heartImg {
+  max-width: 8vmax;
+}
+
+.addButton {
+  max-width: 10vmax;
+  margin-left: 1vmax;
 }
 
 .tiltButton:active,
 .tiltButton:focus {
   transform: rotate(20deg);
-}
-
-.heartImg {
-  max-width: 8vmax;
 }
 
 #editModal {
@@ -68,21 +82,37 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
+}
+
+input[type="file"],
+input[type="radio"] {
+  display: none;
 }
 
 .customFileUpload {
-  border: 0.3vmax solid rgb(0, 195, 255);
-  background-color: rgb(0, 217, 255);
-  border-radius: 1vmax;
-  display: inline-block;
-  padding: 1vmax 3vmax;
   cursor: pointer;
-  font-size: 3vmax;
 }
 
-input[type="file"] {
-  display: none;
+.customIconPicker {
+  border: none;
+  background-color: transparent;
+  padding: unset;
+  cursor: pointer;
+}
+
+.iconPickerArray {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.iconPickerImage {
+  max-width: 5vmax;
+}
+
+input[type="radio"]:checked + .iconPickerImage {
+  max-width: 7vmax;
 }
 
 .usernameInput {
@@ -95,13 +125,6 @@ input[type="file"] {
 
 .saveImage {
   width: 12vmax;
-}
-
-.imageButton {
-  border: none;
-  background-color: transparent;
-  padding: unset;
-  cursor: pointer;
 }
 
 #modalClose {

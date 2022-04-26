@@ -14,7 +14,7 @@
       </a>
       <% members.map(member => { %>
           <form  class="memberWrapper" action="" method="post" id="myForm">
-            <div id="infoWrapper" class="infoWrapper">
+            <div id="infoWrapper" class="infoWrapper imageButton tiltButton">
               <a class="member" href="<%=`/members/${member._id}`%>">
                 <img class="avatarImg" src="<%= member.avatar %>" />
               </a>
@@ -22,11 +22,11 @@
             <div class="heartsArray">
             <% for(let i = 0; i < member.hearts; i++) { %>
               <button type="submit" class="imageButton heartButton tiltButton" formaction="/status/remove">
-                <img draggable="false" class="heartImg" src="/images/pink-heart.png" />
+                <img draggable="false" class="heartImg" src=<%=`/images/${member.icon}.png` %> />
               </button>
             <% } %>
             <button type="submit" class="imageButton heartButton tiltButton" formaction="/status/add">
-              <img class="heartImg" src="/images/pink-hearts.png" />
+              <img draggable="false" class="heartImg addButton" src=<%=`/images/add-${member.icon}.png` %> />
             </button>
             </div>
             <input type="hidden" name="id" value="<%= member._id %>" />
