@@ -55,7 +55,7 @@ const saveMember = async (info) => {
 
 const editMemberData = async (id, data) => {
   let client;
-
+  debug('editMemberData ======== ', id, data);
   try {
     client = await MongoClient.connect(DBURL);
     const db = client.db(DBNAME);
@@ -67,6 +67,8 @@ const editMemberData = async (id, data) => {
     const result = await db.collection('members').updateOne(filter, updateDoc);
 
     debug(result);
+
+    return result;
 
   } catch(error) {
     debug(error);

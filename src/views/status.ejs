@@ -13,7 +13,7 @@
         <img class="backButtonIcon" src="/images/arrow-back.png" />
       </a>
       <% members.map(member => { %>
-          <form  class="memberWrapper" action="" method="post" id="myForm">
+          <div class="memberWrapper">
             <div id="infoWrapper" class="infoWrapper imageButton tiltButton">
               <a class="member" href="<%=`/members/${member._id}`%>">
                 <img class="avatarImg" src="<%= member.avatar %>" />
@@ -21,20 +21,57 @@
             </div>
             <div class="heartsArray">
             <% for(let i = 0; i < member.hearts; i++) { %>
-              <button type="submit" class="imageButton heartButton tiltButton" formaction="/status/remove">
+              <button
+                class="imageButton heartButton tiltButton"
+                onclick="removeHeart('<%=member._id %>', '<%=member.hearts %>')"
+              >
                 <img draggable="false" class="heartImg" src=<%=`/images/${member.icon}.png` %> />
               </button>
             <% } %>
-            <button type="submit" class="imageButton heartButton tiltButton" formaction="/status/add">
+            <button
+              class="imageButton heartButton tiltButton"
+              onclick="addHeart('<%=member._id %>', '<%=member.hearts %>')"
+            >
               <img draggable="false" class="heartImg addButton" src=<%=`/images/add-${member.icon}.png` %> />
             </button>
-            </div>
-            <input type="hidden" name="id" value="<%= member._id %>" />
-            <input type="hidden" name="hearts" value="<%= member.hearts %>" />
-            <input type="hidden" name="route" value="<%=`/status`%>" />
-          </form>
+          </div>
+        </div>
       <% }) %>
     </div>
   </div>
   </body>
+  <script>
+    const addHeart = (id, hearts) => {
+      const  msg = {
+        id,
+        hearts: Number(hearts) + 1
+      };
+      socket.send(JSON.stringify(msg));
+    };
+
+    const removeHeart = (id, hearts) => {
+      const  msg = {
+        id,
+        hearts: Number(hearts) - 1
+      };
+      socket.send(JSON.stringify(msg));
+    };
+
+    // Create WebSocket connection.
+    const socket = new WebSocket('ws://localhost:8080');
+
+    // Connection opened
+    socket.addEventListener('open', function (event) {
+      console.log('Connected to WebSocket server!');
+    });
+
+    // Listen for messages
+    socket.addEventListener('message', function (event) {
+      const { status, message } = JSON.parse(event.data);
+
+      if (status.acknowledged && status.modifiedCount > 0) {
+        location.reload();
+      }
+    });
+  </script>
 </html>
